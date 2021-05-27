@@ -2,7 +2,7 @@
   "name": "with-redux-toolkit-typescript",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p 3030",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
@@ -10,10 +10,14 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.3.6",
+    "axios": "^0.21.1",
+    "classnames": "^2.3.1",
+    "date-fns": "^2.21.3",
     "next": "latest",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-redux": "^7.2.0"
+    "react-redux": "^7.2.0",
+    "sass": "^1.34.0"
   },
   "license": "MIT",
   "devDependencies": {
