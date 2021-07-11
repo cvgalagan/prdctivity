@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner should render 1`] = `
+<div
+  className="spinner spinner_indeterminate"
+  role="progressbar"
+  style={
+    Object {
+      "height": undefined,
+      "width": undefined,
+    }
+  }
+>
+  <svg
+    className="spinner__svg"
+    viewBox="22 22 44 44"
+  >
+    <circle
+      className="spinner__circle"
+      cx={44}
+      cy={44}
+      fill="none"
+      r={20.2}
+      strokeWidth={3.6}
+      style={Object {}}
+    />
+  </svg>
+</div>
+`;

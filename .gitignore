@@ -33,4 +33,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+#env
+*.env
+
 /.idea
+/certificates
+/server.js
