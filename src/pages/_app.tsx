@@ -5,6 +5,10 @@ import type { AppProps } from "next/app"
 import Head from "next/head"
 import store from "../app/store"
 
+const title = "Prdctivity"
+const description = "Make challenges for other people and accept them"
+const keywords = "Challenges goal wish productivity development"
+
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         <Provider store={store}>
@@ -15,11 +19,17 @@ function MyApp({ Component, pageProps }: AppProps) {
                     name="viewport"
                     content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
                 />
-                <title>Prdctivity</title>
-                <meta name="description" content="Make challenges for other people and accept them"/>
-                <meta name="keywords" content="Challenges goal wish productivity development"/>
+                <title>{title}</title>
+                <meta name="description" content={description}/>
+                <meta name="keywords" content={keywords}/>
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="manifest" href="/manifest.webmanifest" />
+                <meta name='application-name' content={title} />
+                <meta name='apple-mobile-web-app-capable' content='yes' />
+                <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />
+                <meta name='apple-mobile-web-app-title' content={title} />
+                <meta name='format-detection' content='telephone=no' />
+                <meta name='mobile-web-app-capable' content='yes' />
                 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
                 <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-touch-icon-57x57.png" />
                 <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-touch-icon-72x72.png" />

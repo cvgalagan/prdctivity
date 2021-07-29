@@ -8,5 +8,8 @@ export default NextAuth({
             clientSecret: process.env.APPLE_KEY_SECRET
         })
     ],
+    pages: {
+        signIn: '/auth/signin'
+    },
     database: process.env.DATABASE_URL
 })

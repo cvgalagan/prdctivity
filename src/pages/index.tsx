@@ -13,6 +13,7 @@ const IndexPage: NextPage = () => {
 
     if (!session) {
         signIn()
+        return <Loading/>
     }
 
     if (loading) {
