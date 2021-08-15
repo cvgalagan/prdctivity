@@ -1,22 +1,27 @@
 import React from "react"
-import type { NextPage } from "next"
-import { signIn, useSession } from "next-auth/client"
+import type {GetServerSideProps, NextPage} from "next"
+import {getSession, signIn, useSession} from "next-auth/client"
 
 import Counter from "../features/Counter/Counter"
-import styles from "../styles/Home.module.scss"
+import styles from "../styles/pages/Home.module.scss"
 import Loading from "../components/Loading/Loading"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHand } from "@fortawesome/pro-thin-svg-icons"
+import {Session} from "next-auth"
 
-const IndexPage: NextPage = () => {
-    const [session, loading] = useSession()
+interface Props {
+    session: Session | null
+}
 
-    if (!session) {
-        signIn()
+const IndexPage: NextPage<Props> = ({ session }) => {
+    const [_, loading] = useSession()
+
+    if (typeof window !== "undefined" && loading) {
         return <Loading/>
     }
 
-    if (loading) {
+    if (!session) {
+        signIn()
         return <Loading/>
     }
 
@@ -31,6 +36,13 @@ const IndexPage: NextPage = () => {
             </header>
         </div>
     )
+}
+
+export const getServerSideProps: GetServerSideProps<Props> = async context => {
+    const session = await getSession(context)
+    return {
+        props: { session }
+    }
 }
 
 export default IndexPage

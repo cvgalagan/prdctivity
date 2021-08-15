@@ -1,4 +1,4 @@
-@use "../../styles/colors" as colors;
+@use "../../styles/common" as common;
 
 .loading {
   position: absolute;
@@ -9,5 +9,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: colors.$white;
+  background-color: common.$white;
 }

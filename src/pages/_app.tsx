@@ -6,7 +6,7 @@ import Head from "next/head"
 import store from "../app/store"
 
 const title = "Prdctivity"
-const description = "Make challenges for other people and accept them"
+const description = "Челенжи для друзей"
 const keywords = "Challenges goal wish productivity development"
 
 function MyApp({ Component, pageProps }: AppProps) {

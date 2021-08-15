@@ -1,0 +1,12 @@
+// 1. Common functions, variables and utilities
+@import "src/styles/common";
+
+// 2. Bootstrap components overrides
+@import "componentsOverrides";
+
+// 3. Components
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/forms";
