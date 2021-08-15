@@ -20,16 +20,16 @@ function MyApp({ Component, pageProps }: AppProps) {
                     content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
                 />
                 <title>{title}</title>
-                <meta name="description" content={description}/>
-                <meta name="keywords" content={keywords}/>
+                <meta name="description" content={description} />
+                <meta name="keywords" content={keywords} />
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="manifest" href="/manifest.webmanifest" />
-                <meta name='application-name' content={title} />
-                <meta name='apple-mobile-web-app-capable' content='yes' />
-                <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />
-                <meta name='apple-mobile-web-app-title' content={title} />
-                <meta name='format-detection' content='telephone=no' />
-                <meta name='mobile-web-app-capable' content='yes' />
+                <meta name="application-name" content={title} />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+                <meta name="apple-mobile-web-app-title" content={title} />
+                <meta name="format-detection" content="telephone=no" />
+                <meta name="mobile-web-app-capable" content="yes" />
                 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
                 <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-touch-icon-57x57.png" />
                 <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-touch-icon-72x72.png" />
@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-touch-icon-144x144.png" />
                 <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-touch-icon-152x152.png" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon-180x180.png" />
-                <meta name="theme-color" content="#F2F2F2"/>
+                <meta name="theme-color" content="#F2F2F2" />
             </Head>
             <Component {...pageProps} />
         </Provider>

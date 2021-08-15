@@ -1,20 +1,18 @@
 {
   "extends": [
-    "next",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended"
   ],
   "parser": "@babel/eslint-parser",
   "rules": {
+    "prettier/prettier": "warn",
     "no-unexpected-multiline": "error",
-    "semi": ["error", "never"],
-    "object-curly-spacing": ["error", "always"],
-    "indent": ["error", 4, {"SwitchCase": 1}],
-    "arrow-parens": ["error", "as-needed"],
     "comma-spacing": ["error", { "before": false, "after": true }],
-    "quotes": ["error", "double", { "avoidEscape": true, "allowTemplateLiterals": true }],
-    "space-before-blocks": ["error", { "functions": "always", "keywords": "always", "classes": "always" }],
     "keyword-spacing": ["error", { "before": true, "after": true }],
-    "key-spacing": ["error", { "beforeColon": false, "afterColon": true }]
+    "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
+    "react/prop-types": "off",
+    "react/display-name": "off"
   },
   "settings": {
     "react": {

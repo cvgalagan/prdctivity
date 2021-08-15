@@ -5,10 +5,10 @@ import Feedback from "react-bootstrap/Feedback"
 import Button from "react-bootstrap/Button"
 import FullPageContainer from "../../components/FullpageContainer/FullPageContainer"
 import { useForm } from "react-hook-form"
-import * as yup from "yup";
-import { yupResolver } from '@hookform/resolvers/yup'
-import {signIn} from "next-auth/client"
-import {CredentialsSignInForm} from "../../models/signIn"
+import * as yup from "yup"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { signIn } from "next-auth/client"
+import { CredentialsSignInForm } from "../../models/signIn"
 import * as constants from "../../utility/constants"
 
 const schema = yup.object().shape({
@@ -17,7 +17,11 @@ const schema = yup.object().shape({
 })
 
 const CredentialsSignIn = () => {
-    const { register, handleSubmit, formState: { errors, touchedFields } } = useForm<CredentialsSignInForm>({
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, touchedFields }
+    } = useForm<CredentialsSignInForm>({
         resolver: yupResolver(schema)
     })
 
@@ -35,7 +39,9 @@ const CredentialsSignIn = () => {
                         placeholder="Введите email"
                         isInvalid={touchedFields.email && !!errors.email}
                     />
-                    <Feedback type="invalid" tooltip>{errors.email?.message}</Feedback>
+                    <Feedback type="invalid" tooltip>
+                        {errors.email?.message}
+                    </Feedback>
                 </Form.Group>
 
                 <Form.Group className={styles["loginForm__group"]} controlId="formBasicPassword">
@@ -47,7 +53,9 @@ const CredentialsSignIn = () => {
                         autoComplete="off"
                         isInvalid={touchedFields.password && !!errors.password}
                     />
-                    <Feedback type="invalid" tooltip>{errors.password?.message}</Feedback>
+                    <Feedback type="invalid" tooltip>
+                        {errors.password?.message}
+                    </Feedback>
                 </Form.Group>
                 <Button className={styles["loginForm__submit"]} type="submit">
                     Войти

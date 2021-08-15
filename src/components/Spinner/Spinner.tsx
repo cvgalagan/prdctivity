@@ -5,11 +5,11 @@ import cn from "classnames"
 const SIZE = 44
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
-    disableShrink?: boolean;
-    size?: number | string;
-    thickness?: number;
-    value?: number;
-    variant?: "determinate" | "indeterminate" | "static";
+    disableShrink?: boolean
+    size?: number | string
+    thickness?: number
+    value?: number
+    variant?: "determinate" | "indeterminate" | "static"
 }
 
 function getRelativeValue(value: number, min: number, max: number) {
@@ -50,16 +50,15 @@ const Spinner = React.forwardRef<HTMLDivElement, Props>(function (props, ref) {
             circleStyle.strokeDashoffset = `${(((100 - value) / 100) * circumference).toFixed(3)}px`
             rootStyle.transform = "rotate(-90deg)"
         } else {
-            circleStyle.strokeDashoffset = `${(easeIn((100 - value) / 100) * circumference).toFixed(
-                3,
-            )}px`
+            circleStyle.strokeDashoffset = `${(easeIn((100 - value) / 100) * circumference).toFixed(3)}px`
             rootStyle.transform = `rotate(${(easeOut(value / 70) * 270).toFixed(3)}deg)`
         }
     }
 
     return (
         <div
-            className={cn(styles.spinner,
+            className={cn(
+                styles.spinner,
                 variant === "indeterminate"
                     ? styles.spinner_indeterminate
                     : variant === "static" && styles.spinner_static,

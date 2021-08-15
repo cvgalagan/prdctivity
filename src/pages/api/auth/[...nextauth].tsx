@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import Providers from "next-auth/providers"
 import * as constants from "../../../utility/constants"
 import hashPassword from "../../../utility/password"
-import {CredentialsSignInForm} from "../../../models/signIn"
+import { CredentialsSignInForm } from "../../../models/signIn"
 import userRequests from "../../../app/db/user"
 
 export default NextAuth({
@@ -33,8 +33,8 @@ export default NextAuth({
         })
     ],
     pages: {
-        signIn: '/auth/signin',
-        error: '/auth/error'
+        signIn: "/auth/signin",
+        error: "/auth/error"
     },
     database: process.env.DATABASE_URL,
     secret: process.env.SECRET,

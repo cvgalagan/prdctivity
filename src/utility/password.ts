@@ -1,4 +1,4 @@
-import Sha256 from 'crypto-js/sha256'
+import Sha256 from "crypto-js/sha256"
 
 const hashPassword = (password: string) => {
     const salt = process.env.PASSWORD_SALT

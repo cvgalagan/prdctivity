@@ -1,13 +1,13 @@
 import React from "react"
-import type {GetServerSideProps, NextPage} from "next"
-import {getSession, signIn, useSession} from "next-auth/client"
+import type { GetServerSideProps, NextPage } from "next"
+import { getSession, signIn, useSession } from "next-auth/client"
 
 import Counter from "../features/Counter/Counter"
 import styles from "../styles/pages/Home.module.scss"
 import Loading from "../components/Loading/Loading"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHand } from "@fortawesome/pro-thin-svg-icons"
-import {Session} from "next-auth"
+import { Session } from "next-auth"
 
 interface Props {
     session: Session | null
@@ -17,12 +17,12 @@ const IndexPage: NextPage<Props> = ({ session }) => {
     const [_, loading] = useSession()
 
     if (typeof window !== "undefined" && loading) {
-        return <Loading/>
+        return <Loading />
     }
 
     if (!session) {
         signIn()
-        return <Loading/>
+        return <Loading />
     }
 
     return (
@@ -30,9 +30,9 @@ const IndexPage: NextPage<Props> = ({ session }) => {
             <header className={styles.header}>
                 <Counter />
                 <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+                    Edit <code>src/App.tsx</code> and save to reload.
                 </p>
-                <FontAwesomeIcon icon={faHand}/>
+                <FontAwesomeIcon icon={faHand} />
             </header>
         </div>
     )

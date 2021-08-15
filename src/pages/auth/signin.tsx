@@ -1,8 +1,8 @@
 import React from "react"
-import {ClientSafeProvider, getProviders, signIn} from "next-auth/client"
+import { ClientSafeProvider, getProviders, signIn } from "next-auth/client"
 import styles from "../../styles/pages/SignIn.module.scss"
 import Button from "react-bootstrap/Button"
-import type {NextPage} from "next"
+import type { NextPage } from "next"
 import FullPageContainer from "../../components/FullpageContainer/FullPageContainer"
 import * as constants from "../../utility/constants"
 
@@ -15,7 +15,7 @@ const SignIn: NextPage<Props> = ({ providers }) => {
         <FullPageContainer className={styles.signIn}>
             {Object.values(providers).map(provider => {
                 if (provider.name === constants.credentials.name) {
-                    return;
+                    return
                 }
                 return (
                     <div key={provider.name}>
@@ -23,13 +23,15 @@ const SignIn: NextPage<Props> = ({ providers }) => {
                     </div>
                 )
             })}
-            <Button variant="link" href="/auth/credentials-signin">Войти через форму</Button>
+            <Button variant="link" href="/auth/credentials-signin">
+                Войти через форму
+            </Button>
         </FullPageContainer>
     )
 }
 
 export const getServerSideProps = async () => {
-    const providers = await getProviders() ?? {}
+    const providers = (await getProviders()) ?? {}
     return {
         props: { providers }
     }

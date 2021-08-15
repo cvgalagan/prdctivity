@@ -1,4 +1,3 @@
-
 export const credentials = {
     id: "form",
     name: "Форму"

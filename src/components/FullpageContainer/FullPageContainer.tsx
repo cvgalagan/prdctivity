@@ -1,7 +1,7 @@
-import React, {ReactNode} from "react"
+import React, { ReactNode } from "react"
 import styles from "./FullPageContainer.module.scss"
 import Container from "react-bootstrap/Container"
-import {ClassProp} from "../../types/classProp"
+import { ClassProp } from "../../types/classProp"
 import cn from "classnames"
 
 interface Props extends ClassProp {
