@@ -1,48 +1,26 @@
 import React from "react"
-import type { GetServerSideProps, NextPage } from "next"
-import { getSession, signIn, useSession } from "next-auth/client"
-
 import Counter from "../features/Counter/Counter"
 import styles from "../styles/pages/Home.module.scss"
-import Loading from "../components/Loading/Loading"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHand } from "@fortawesome/pro-thin-svg-icons"
-import { Session } from "next-auth"
+import Button from "react-bootstrap/Button"
+import { signOut } from "next-auth/client"
+import { NextAuthPage } from "../types/auth"
 
-interface Props {
-    session: Session | null
-}
+interface Props {}
 
-const IndexPage: NextPage<Props> = ({ session }) => {
-    const [_, loading] = useSession()
-
-    if (typeof window !== "undefined" && loading) {
-        return <Loading />
-    }
-
-    if (!session) {
-        signIn()
-        return <Loading />
-    }
-
+const IndexPage: NextAuthPage<Props> = () => {
     return (
-        <div className={styles.container}>
-            <header className={styles.header}>
-                <Counter />
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-                <FontAwesomeIcon icon={faHand} />
-            </header>
-        </div>
+        <header className={styles.header}>
+            <Counter />
+            <p>
+                Edit <code>src/App.tsx</code> and save to reload.
+            </p>
+            <Button variant="outline-primary" onClick={() => signOut()}>
+                Выйти
+            </Button>
+        </header>
     )
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async context => {
-    const session = await getSession(context)
-    return {
-        props: { session }
-    }
-}
+IndexPage.auth = true
 
 export default IndexPage

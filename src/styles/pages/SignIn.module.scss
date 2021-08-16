@@ -1,4 +1,69 @@
+@use "../../styles/common" as common;
+
+$container-width: 350px;
+$brand-button-size: 45px;
+$apple-bg: common.$black;
+$apple-bg-hover: lighten($apple-bg, 15%);
+$apple-color: common.$white;
+$vk-bg: #5181b8;
+$vk-bg-hover: lighten($vk-bg, 10%);
+$vk-color: common.$white;
 
 .signIn {
-
+  padding-top: 30vh;
+  &__container {
+    width: $container-width;
+  }
+  &__form {
+    margin-bottom: 40px;
+  }
+  &__bottomSpace {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__bottomText {
+    font-size: common.$small-font-size;
+    color: common.$text-muted;
+    margin-bottom: 10px;
+  }
+  &__brandProviders {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  &__brandButton {
+    width: $brand-button-size;
+    height: $brand-button-size;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+  &__brandIcon {
+    font-size: common.$font-size-lg;
+  }
+  &__apple {
+    border-color: $apple-bg;
+    background-color: $apple-bg;
+    color: $apple-color;
+    &:hover, &:focus {
+      border-color: $apple-bg-hover;
+      background-color: $apple-bg-hover;
+      color: $apple-color;
+    }
+  }
+  &__vk {
+    border-color: $vk-bg;
+    background-color: $vk-bg;
+    color: $vk-color;
+    &:hover, &:focus {
+      border-color: $vk-bg-hover;
+      background-color: $vk-bg-hover;
+      color: $vk-color;
+    }
+  }
 }

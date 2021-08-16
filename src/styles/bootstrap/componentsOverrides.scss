@@ -1,4 +1,13 @@
 
-.btn-primary, .btn-secondary {
-  color: $white
+.btn.btn-primary, .btn.btn-secondary {
+  color: $white;
+  &:hover, &:focus {
+    color: $white;
+  }
+}
+
+.btn.btn-outline-primary, .btn.btn-outline-secondary {
+  &:hover {
+    color: $white;
+  }
 }

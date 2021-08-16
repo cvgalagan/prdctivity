@@ -1,0 +1,23 @@
+@use "../../styles/common" as common;
+
+$bottom-placement: 50px;
+$horizontal-padding: 20px;
+
+.menu {
+  position: absolute;
+  bottom: $bottom-placement;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px $horizontal-padding;
+  border-radius: common.$border-radius;
+  box-shadow: common.$box-shadow-lg;
+  &__item {
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@use "../../styles/common" as common;
+
+$title-font-size: common.$font-size-base * .7;
+
+.menuItem {
+  color: common.$text-muted;
+  font-size: $title-font-size;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+  outline: 0;
+  @include common.transition;
+  &:hover {
+    color: common.$primary;
+  }
+  &:focus {
+    color: lighten(common.$primary, 20%);
+  }
+  &__icon {
+    font-size: map-get(common.$display-font-sizes, "6");
+  }
+  &__title {
+
+  }
+}

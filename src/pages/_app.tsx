@@ -1,15 +1,20 @@
 import "../styles/globals.scss"
 import React from "react"
 import { Provider } from "react-redux"
-import type { AppProps } from "next/app"
+import { Provider as SessionProvider } from "next-auth/client"
 import Head from "next/head"
 import store from "../app/store"
+import Auth from "../components/Auth/Auth"
+import { AuthAppProps } from "../types/auth"
+import Layout from "../components/Layout/Layout"
 
 const title = "Prdctivity"
-const description = "Челенжи для друзей"
+const description = "Испытания для друзей"
 const keywords = "Challenges goal wish productivity development"
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AuthAppProps) {
+    const getLayout = Component.getLayout ?? (page => page)
+
     return (
         <Provider store={store}>
             <Head>
@@ -41,7 +46,19 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon-180x180.png" />
                 <meta name="theme-color" content="#F2F2F2" />
             </Head>
-            <Component {...pageProps} />
+            <SessionProvider session={pageProps.session}>
+                {getLayout(
+                    Component.auth ? (
+                        <Auth>
+                            <Layout>
+                                <Component {...pageProps} />
+                            </Layout>
+                        </Auth>
+                    ) : (
+                        <Component {...pageProps} />
+                    )
+                )}
+            </SessionProvider>
         </Provider>
     )
 }

@@ -38,6 +38,16 @@ export default NextAuth({
     },
     database: process.env.DATABASE_URL,
     secret: process.env.SECRET,
+    callbacks: {
+        async session(session, user) {
+            session.userId = user.userId ?? user.id
+            return session
+        },
+        async jwt(token, user, _account, profile) {
+            token.userId = user ? user.id : profile ? profile.id : token.userId ? token.userId : undefined
+            return token
+        }
+    },
     session: {
         jwt: true,
         maxAge: 7 * 24 * 60 * 60, // week
