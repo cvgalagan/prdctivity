@@ -3,8 +3,14 @@ export const credentials = {
     name: "Форму"
 }
 
+export const errors = {
+    userIdNotFound: "Не могу получить твой идентификатор",
+    userNotFound: "Не могу получить пользователя"
+}
+
 const constants = {
-    credentials
+    credentials,
+    errors
 }
 
 export default constants

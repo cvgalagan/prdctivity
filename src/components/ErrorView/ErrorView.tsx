@@ -1,7 +1,7 @@
 import React from "react"
 import styles from "./ErrorView.module.scss"
 import Button from "react-bootstrap/Button"
-import {ClassProp} from "../../types/classProp"
+import { ClassProp } from "../../types/classProp"
 import cn from "classnames"
 
 interface Props extends ClassProp {

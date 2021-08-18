@@ -1,5 +1,5 @@
 import prisma from "../../lib/prisma"
-import {safeUserSelect} from "../../models/user"
+import { safeUserSelect } from "../../models/user"
 
 const userRequests = {
     get: (email: string, passwordHash: string) =>

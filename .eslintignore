@@ -1,0 +1,5 @@
+.next
+certificates
+node_modules
+prisma
+public

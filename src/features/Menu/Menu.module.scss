@@ -15,9 +15,16 @@ $horizontal-padding: 20px;
   padding: 10px $horizontal-padding;
   border-radius: common.$border-radius;
   box-shadow: common.$box-shadow-lg;
+  z-index: 4000;
   &__item {
     &:not(:last-child) {
       margin-right: 30px;
     }
+  }
+  @include common.media-query {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: none;
   }
 }

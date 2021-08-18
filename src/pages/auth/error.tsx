@@ -1,7 +1,7 @@
 import React from "react"
 import { useRouter } from "next/router"
 import type { NextPage } from "next"
-import FullPageLayout from "../../components/FullpageContainer/FullPageLayout"
+import FullPageLayout from "../../components/FullpageLayout/FullPageLayout"
 import ErrorView from "../../components/ErrorView/ErrorView"
 
 const Error: NextPage = () => {
@@ -12,7 +12,7 @@ const Error: NextPage = () => {
 
     return (
         <FullPageLayout>
-            <ErrorView message={errorMessage}/>
+            <ErrorView message={errorMessage} />
         </FullPageLayout>
     )
 }

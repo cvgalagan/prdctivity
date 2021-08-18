@@ -4,7 +4,7 @@ import { MenuDataItem } from "./model"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ClassProp } from "../../types/classProp"
 import cn from "classnames"
-import {useRouter} from "next/router"
+import { useRouter } from "next/router"
 
 interface Props extends ClassProp {
     value: MenuDataItem

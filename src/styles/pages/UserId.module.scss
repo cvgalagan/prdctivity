@@ -1,4 +1,35 @@
+@use "../../styles/common" as common;
+
+$spacer: 25px;
 
 .userId {
-
+  &__imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px;
+  }
+  &__image {
+    margin: $spacer;
+    img {
+      border-radius: 50%;
+    }
+  }
+  &__personalInfo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    @include common.media-query {
+      align-items: center;
+      text-align: center;
+    }
+  }
+  &__name {
+    font-size: common.$font-size-lg;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  &__email {
+    color: common.$text-muted;
+  }
 }

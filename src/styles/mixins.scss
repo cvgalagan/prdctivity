@@ -1,0 +1,6 @@
+
+@mixin media-query {
+  @media (max-width: map-get($grid-breakpoints, "md")) {
+    @content
+  }
+}

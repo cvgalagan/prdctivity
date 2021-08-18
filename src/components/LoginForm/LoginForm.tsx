@@ -1,13 +1,13 @@
 import React from "react"
 import styles from "./LoginForm.module.scss"
-import {useForm} from "react-hook-form"
-import {CredentialsSignInForm} from "../../models/signIn"
-import {yupResolver} from "@hookform/resolvers/yup"
+import { useForm } from "react-hook-form"
+import { CredentialsSignInForm } from "../../models/signIn"
+import { yupResolver } from "@hookform/resolvers/yup"
 import Form from "react-bootstrap/Form"
 import Feedback from "react-bootstrap/Feedback"
 import Button from "react-bootstrap/Button"
 import * as yup from "yup"
-import {ClassProp} from "../../types/classProp"
+import { ClassProp } from "../../types/classProp"
 import cn from "classnames"
 
 const schema = yup.object().shape({
