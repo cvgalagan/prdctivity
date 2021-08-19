@@ -1,0 +1,33 @@
+@use "../../styles/common" as common;
+
+$spinner-size: 20px;
+
+.loadingButton {
+  position: relative;
+  $self: &;
+  &__spinnerContainer {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    bottom: 0;
+    left: 50%;
+    display: none;
+    width: $spinner-size;
+    height: $spinner-size;
+  }
+  &__spinner {
+    color: common.$white;
+    width: $spinner-size;
+    height: $spinner-size;
+  }
+  &__content {
+    visibility: visible;
+  }
+  &_isLoading {
+    #{$self}__content {
+      visibility: hidden;
+    }
+    #{$self}__spinnerContainer {
+      display: block;
+    }
+  }
+}

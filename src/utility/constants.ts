@@ -4,6 +4,8 @@ export const credentials = {
 }
 
 export const errors = {
+    serverError: "Ошибка сервера",
+    pageNotFound: "Страница не найдена",
     userIdNotFound: "Не могу получить твой идентификатор",
     userNotFound: "Не могу получить пользователя"
 }
