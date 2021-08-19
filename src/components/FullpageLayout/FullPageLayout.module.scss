@@ -1,6 +1,7 @@
+@use "../../styles/common" as common;
 
 .fullPageLayout {
-  height: 100vh;
+  @include common.full-page;
   display: flex;
   flex-direction: column;
   align-items: center;
