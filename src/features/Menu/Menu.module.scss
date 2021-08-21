@@ -12,7 +12,7 @@ $horizontal-padding: 20px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 10px $horizontal-padding;
+  padding: 10px $horizontal-padding 20px $horizontal-padding;
   border-radius: common.$border-radius;
   box-shadow: common.$box-shadow-lg;
   z-index: 4000;
