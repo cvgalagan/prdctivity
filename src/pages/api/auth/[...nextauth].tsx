@@ -11,7 +11,12 @@ export default NextAuth({
     providers: [
         Providers.Apple({
             clientId: process.env.APPLE_ID,
-            clientSecret: process.env.APPLE_KEY_SECRET
+            clientSecret: {
+                appleId: process.env.APPLE_ID ?? "",
+                teamId: process.env.APPLE_TEAM_ID ?? "",
+                privateKey: process.env.APPLE_PRIVATE_KEY ?? "",
+                keyId: process.env.APPLE_KEY_ID ?? ""
+            }
         }),
         Providers.VK({
             clientId: process.env.VK_CLIENT_ID,
