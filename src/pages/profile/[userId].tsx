@@ -55,10 +55,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async context => {
     const userId = context.params?.userId
     let user = null
     if (typeof userId === "string") {
-        const userIdNumber = parseInt(userId, 10)
-        if (userIdNumber) {
-            user = await userRequests.getById(userIdNumber)
-        }
+        user = await userRequests.getById(userId)
     }
     return {
         props: {

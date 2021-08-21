@@ -7,7 +7,7 @@ const userRequests = {
             where: { email, passwordHash },
             select: safeUserSelect
         }),
-    getById: (userId: number) =>
+    getById: (userId: string) =>
         prisma.user.findUnique({
             where: { id: userId },
             select: safeUserSelect
