@@ -43,7 +43,8 @@ export default NextAuth({
         signIn: "/auth/signin",
         error: "/auth/error"
     },
-    database: PrismaAdapter(prisma),
+    adapter: PrismaAdapter(prisma),
+    database: process.env.DATABASE_URL,
     secret: process.env.SECRET,
     callbacks: {
         async session(session, user) {
