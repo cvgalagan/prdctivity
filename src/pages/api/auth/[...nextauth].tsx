@@ -4,6 +4,8 @@ import * as constants from "../../../utility/constants"
 import hashPassword from "../../../utility/password"
 import { CredentialsSignInForm } from "../../../models/signIn"
 import userRequests from "../../../app/db/user"
+import prisma from "../../../lib/prisma"
+import { PrismaAdapter } from "@next-auth/prisma-adapter"
 
 export default NextAuth({
     providers: [
@@ -36,7 +38,7 @@ export default NextAuth({
         signIn: "/auth/signin",
         error: "/auth/error"
     },
-    database: process.env.DATABASE_URL,
+    database: PrismaAdapter(prisma),
     secret: process.env.SECRET,
     callbacks: {
         async session(session, user) {
@@ -46,6 +48,9 @@ export default NextAuth({
         async jwt(token, user, _account, profile) {
             token.userId = user ? user.id : profile ? profile.id : token.userId ? token.userId : undefined
             return token
+        },
+        async redirect(url, baseUrl) {
+            return url.startsWith(baseUrl) ? Promise.resolve(url) : Promise.resolve(baseUrl)
         }
     },
     session: {

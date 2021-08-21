@@ -1,8 +1,8 @@
-import React from "react"
-import { ClientSafeProvider, getProviders, signIn } from "next-auth/client"
+import React, { useEffect } from "react"
+import { ClientSafeProvider, getProviders, signIn, useSession } from "next-auth/client"
 import styles from "../../styles/pages/SignIn.module.scss"
 import Button from "react-bootstrap/Button"
-import type { NextPage } from "next"
+import type { GetServerSideProps, NextPage } from "next"
 import FullPageLayout from "../../components/FullpageLayout/FullPageLayout"
 import * as constants from "../../utility/constants"
 import LoginForm from "../../components/LoginForm/LoginForm"
@@ -12,6 +12,7 @@ import { faVk } from "@fortawesome/free-brands-svg-icons/faVk"
 import { faCircleQuestion } from "@fortawesome/pro-thin-svg-icons/faCircleQuestion"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import cn from "classnames"
+import { useRouter } from "next/router"
 
 interface Props {
     providers: Record<string, ClientSafeProvider>
@@ -29,6 +30,16 @@ const getProviderIcon = (providerName: string) => {
 }
 
 const SignIn: NextPage<Props> = ({ providers }) => {
+    const router = useRouter()
+    const [session] = useSession()
+
+    useEffect(() => {
+        const callbackUrl = router.query["callbackUrl"]
+        if (session) {
+            typeof callbackUrl === "string" ? router.push(callbackUrl) : router.push("/")
+        }
+    }, [router, session])
+
     const onSubmitForm = async (data: CredentialsSignInForm) => {
         await signIn(constants.credentials.id, { ...data })
     }
@@ -65,7 +76,7 @@ const SignIn: NextPage<Props> = ({ providers }) => {
     )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
     const providers = (await getProviders()) ?? {}
     return {
         props: { providers }
