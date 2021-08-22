@@ -1,3 +1,5 @@
+import { TokenSet } from "next-auth"
+
 export interface VKPlace {
     id: number
     title: string
@@ -17,20 +19,10 @@ export interface VKProfile {
     timezone: string
     email?: string | null
 }
-export interface VKAccount {
-    provider: string
-    type: "oauth"
-    id: number
-    accessToken: string
-    accessTokenExpires: number | null
-    refreshToken?: string
-    idToken?: string
-    access_token: string
-    expires_in: number
-    user_id: number
+export interface VKTokenSet extends TokenSet {
     email: string | null
 }
 
 export interface VKProfileResponse {
-    response?: [VKProfile, VKAccount]
+    response?: [VKProfile]
 }
