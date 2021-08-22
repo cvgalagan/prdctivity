@@ -25,7 +25,7 @@ export default NextAuth({
             profile: result => {
                 let typedResult = result as VKProfileResponse
                 const profile = typedResult.response?.[0]
-                console.log(result)
+                console.error("KEK", result)
 
                 return {
                     id: profile ? profile.id.toString() : ""
