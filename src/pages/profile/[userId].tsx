@@ -8,6 +8,8 @@ import { Row, Col } from "react-bootstrap"
 import Image from "next/image"
 import ErrorView from "../../components/ErrorView/ErrorView"
 import { errors } from "../../utility/constants"
+import { signOut, useSession } from "next-auth/client"
+import Button from "react-bootstrap/Button"
 
 interface Props {
     user: SafeUser | null
@@ -25,27 +27,41 @@ const blockBreakpoints = {
 }
 
 const UserId: NextAuthPage<Props> = ({ user }) => {
+    const [session] = useSession()
+
     if (!user) {
         return <ErrorView message={errors.userNotFound} />
     }
 
+    const onSignOut = () => signOut()
+
     return (
-        <Row className={styles.userId}>
-            <Col {...blockBreakpoints} className={styles["userId__imageContainer"]}>
-                <div className={styles["userId__image"]}>
-                    <Image
-                        src={user.image ? user.image : "/assets/images/default-user.jpg"}
-                        alt=""
-                        width={imageSize}
-                        height={imageSize}
-                    />
-                </div>
-            </Col>
-            <Col className={styles["userId__personalInfo"]}>
-                <div className={styles["userId__name"]}>{user.name}</div>
-                <div className={styles["userId__email"]}>{user.email}</div>
-            </Col>
-        </Row>
+        <>
+            <Row className={styles.userId}>
+                <Col {...blockBreakpoints} className={styles["userId__imageContainer"]}>
+                    <div className={styles["userId__image"]}>
+                        {user.image ? (
+                            <img src={user.image} alt="" />
+                        ) : (
+                            <Image src="/assets/images/default-user.jpg" alt="" width={imageSize} height={imageSize} />
+                        )}
+                    </div>
+                </Col>
+                <Col className={styles["userId__personalInfo"]}>
+                    <div className={styles["userId__name"]}>{user.name}</div>
+                    <div className={styles["userId__email"]}>{user.email}</div>
+                </Col>
+            </Row>
+            {session?.userId === user.id && (
+                <Row>
+                    <Col className={styles["userId__signOutContainer"]}>
+                        <Button variant="outline-danger" onClick={onSignOut}>
+                            Выйти из аккаунта
+                        </Button>
+                    </Col>
+                </Row>
+            )}
+        </>
     )
 }
 

@@ -1,17 +1,27 @@
 @use "../../styles/common" as common;
 
 $spacer: 25px;
+$image-size: 200px;
 
 .userId {
   &__imageContainer {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     min-width: 200px;
+    margin-right: $spacer;
+    @include common.media-query {
+      justify-content: center;
+      margin-right: 0;
+    }
   }
   &__image {
     margin: $spacer;
+    width: $image-size;
+    height: $image-size;
     img {
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
     }
   }
@@ -31,5 +41,10 @@ $spacer: 25px;
   }
   &__email {
     color: common.$text-muted;
+  }
+  &__signOutContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
   }
 }
