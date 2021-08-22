@@ -15,6 +15,7 @@ export interface VKProfile {
     photo_200: string
     photo_max_orig: string
     timezone: string
+    email?: string | null
 }
 export interface VKAccount {
     provider: string

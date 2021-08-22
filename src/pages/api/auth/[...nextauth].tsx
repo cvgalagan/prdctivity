@@ -25,14 +25,12 @@ export default NextAuth({
             profile: result => {
                 let typedResult = result as VKProfileResponse
                 const profile = typedResult.response?.[0]
-                console.error("KEK", result)
 
                 return {
-                    id: profile ? profile.id.toString() : ""
-                    // id: profile.id,
-                    // name: [profile.first_name, profile.last_name].filter(Boolean).join(" "),
-                    // email: profile.email,
-                    // image: profile.photo_100
+                    id: profile ? profile.id.toString() : "",
+                    name: profile ? [profile.first_name, profile.last_name].filter(Boolean).join(" ") : null,
+                    email: profile ? profile.email : null,
+                    image: profile ? profile.photo_100 : null
                 }
             }
         }),
