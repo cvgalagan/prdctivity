@@ -6,6 +6,7 @@ import { CredentialsSignInForm } from "../../../models/signIn"
 import userRequests from "../../../app/db/user"
 import prisma from "../../../lib/prisma"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
+import { VKProfileResponse } from "../../../types/vk"
 
 export default NextAuth({
     providers: [
@@ -20,7 +21,20 @@ export default NextAuth({
         }),
         Providers.VK({
             clientId: process.env.VK_CLIENT_ID,
-            clientSecret: process.env.VK_CLIENT_SECRET
+            clientSecret: process.env.VK_CLIENT_SECRET,
+            profile: result => {
+                let typedResult = result as VKProfileResponse
+                const profile = typedResult.response?.[0]
+                console.log(result)
+                throw Error("kek")
+                return {
+                    id: profile ? profile.id.toString() : ""
+                    // id: profile.id,
+                    // name: [profile.first_name, profile.last_name].filter(Boolean).join(" "),
+                    // email: profile.email,
+                    // image: profile.photo_100
+                }
+            }
         }),
         Providers.Credentials({
             id: constants.credentials.id,
