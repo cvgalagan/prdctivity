@@ -1,19 +1,15 @@
-import React, { useState } from "react"
+import React from "react"
 import styles from "../styles/pages/Home.module.scss"
 import { NextAuthPage } from "../types/auth"
-import LoadingButton from "../components/LoadingButton/LoadingButton"
+import ChallengeDashboard from "../features/ChallengeDashboard/ChallengeDashboard"
 
 interface Props {}
 
 const IndexPage: NextAuthPage<Props> = () => {
-    const [isLoading, setLoading] = useState(false)
-
     return (
-        <header className={styles.header}>
-            <LoadingButton loading={isLoading} onClick={() => setLoading(!isLoading)}>
-                Кнопка с загрузкой
-            </LoadingButton>
-        </header>
+        <div className={styles.header}>
+            <ChallengeDashboard />
+        </div>
     )
 }
 

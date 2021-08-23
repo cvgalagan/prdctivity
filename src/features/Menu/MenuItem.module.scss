@@ -1,6 +1,7 @@
 @use "../../styles/common" as common;
 
 $title-font-size: common.$font-size-base * .7;
+$light-color: lighten(common.$primary, 20%);
 
 .menuItem {
   color: common.$text-muted;
@@ -13,11 +14,14 @@ $title-font-size: common.$font-size-base * .7;
   cursor: pointer;
   outline: 0;
   @include common.transition;
+  &_selected {
+    color: $light-color
+  }
   &:hover {
     color: common.$primary;
   }
   &:focus {
-    color: lighten(common.$primary, 20%);
+    color: $light-color
   }
   &__icon {
     font-size: map-get(common.$display-font-sizes, "6");

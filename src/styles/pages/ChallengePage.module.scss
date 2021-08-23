@@ -1,0 +1,31 @@
+@use "../../styles/common" as common;
+
+.challengePage {
+  &__header {
+    border-bottom: 1px solid common.$gray-200;
+    padding-bottom: 3px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    @include common.media-query {
+      justify-content: space-between;
+    }
+  }
+  &__title {
+    font-size: common.$h5-font-size;
+    font-weight: bold;
+  }
+  &__icon {
+    margin-left: 5px;
+    font-size: common.$font-size-lg;
+  }
+  &__body {
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__contentEmpty {
+    color: common.$text-muted;
+  }
+}

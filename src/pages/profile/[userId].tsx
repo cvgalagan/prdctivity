@@ -10,21 +10,13 @@ import ErrorView from "../../components/ErrorView/ErrorView"
 import { errors } from "../../utility/constants"
 import { signOut, useSession } from "next-auth/client"
 import Button from "react-bootstrap/Button"
+import { getColOptions } from "../../utility/layout"
 
 interface Props {
     user: SafeUser | null
 }
 
 const imageSize = "200px"
-
-const blockBreakpoints = {
-    xs: 12,
-    sm: 12,
-    md: 6,
-    lg: 6,
-    xl: 6,
-    xxl: 6
-}
 
 const UserId: NextAuthPage<Props> = ({ user }) => {
     const [session] = useSession()
@@ -38,7 +30,7 @@ const UserId: NextAuthPage<Props> = ({ user }) => {
     return (
         <>
             <Row className={styles.userId}>
-                <Col {...blockBreakpoints} className={styles["userId__imageContainer"]}>
+                <Col {...getColOptions(12, 6)} className={styles["userId__imageContainer"]}>
                     <div className={styles["userId__image"]}>
                         {user.image ? (
                             <img src={user.image} alt="" />

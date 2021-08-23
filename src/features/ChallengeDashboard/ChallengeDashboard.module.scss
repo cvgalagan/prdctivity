@@ -1,0 +1,9 @@
+@use "../../styles/common" as common;
+
+.challengeDashboard {
+  &__card {
+    @include common.media-query {
+      margin-bottom: 20px;
+    }
+  }
+}

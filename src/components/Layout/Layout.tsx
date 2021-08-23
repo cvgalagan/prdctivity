@@ -10,7 +10,7 @@ const Layout: React.FC<Props> = props => {
 
     return (
         <Container className={styles.layout} fluid="xl">
-            {children}
+            <main>{children}</main>
             <Menu />
         </Container>
     )
