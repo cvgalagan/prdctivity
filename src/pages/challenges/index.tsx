@@ -4,25 +4,28 @@ import { NextAuthPage } from "../../types/auth"
 import { faPlus } from "@fortawesome/pro-thin-svg-icons/faPlus"
 import IconButton from "../../components/IconButton/IconButton"
 import { useRouter } from "next/router"
+import PageWithTitleLayout from "../../components/PageWithTitleLayout/PageWithTitleLayout"
 
 const ChallengePage: NextAuthPage = () => {
     const router = useRouter()
 
     return (
-        <div className={styles.challengePage}>
-            <div className={styles["challengePage__header"]}>
-                <div className={styles["challengePage__title"]}>Твои испытания</div>
+        <PageWithTitleLayout
+            className={styles.challengePage}
+            title="Твои испытания"
+            headerItems={
                 <IconButton
                     variant="link"
                     icon={faPlus}
                     href={`${router.pathname}/create`}
                     className={styles["challengePage__icon"]}
                 />
-            </div>
+            }
+        >
             <div className={styles["challengePage__body"]}>
                 <div className={styles["challengePage__contentEmpty"]}>У тебя пока нет испытаний для друзей</div>
             </div>
-        </div>
+        </PageWithTitleLayout>
     )
 }
 

@@ -1,0 +1,22 @@
+@use "../../styles/common" as common;
+
+.pageWithTitleLayout {
+  &__header {
+    border-bottom: 1px solid common.$gray-200;
+    padding-bottom: 3px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    @include common.media-query {
+      justify-content: space-between;
+    }
+  }
+  &__title {
+    font-size: common.$h5-font-size;
+    font-weight: bold;
+  }
+  &__body {
+
+  }
+}

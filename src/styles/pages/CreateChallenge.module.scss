@@ -1,0 +1,25 @@
+@use "../common" as common;
+
+.createChallenge {
+  display: flex;
+  justify-content: center;
+  &__form {
+    width: 30vw;
+    @include common.media-query {
+      width: 100%;
+    }
+  }
+  &__formInput {
+    margin-bottom: 10px;
+  }
+  &__challengeDescriptionInput {
+    resize: none;
+    height: 100px !important;
+  }
+  &__submit {
+    width: 100%;
+  }
+  &__back {
+    width: 100%;
+  }
+}
