@@ -1,16 +1,16 @@
 import prisma from "../../lib/prisma"
-import { safeUserSelect } from "../../models/user"
+import { selectUser } from "../../models/user"
 
 const userRequests = {
     get: (email: string, passwordHash: string) =>
         prisma.user.findFirst({
             where: { email, passwordHash },
-            select: safeUserSelect
+            select: selectUser
         }),
     getById: (userId: string) =>
         prisma.user.findUnique({
             where: { id: userId },
-            select: safeUserSelect
+            select: selectUser
         })
 }
 
