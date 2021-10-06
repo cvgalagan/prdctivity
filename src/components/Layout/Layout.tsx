@@ -9,10 +9,12 @@ const Layout: React.FC<Props> = props => {
     const { children } = props
 
     return (
-        <Container className={styles.layout} fluid="xl">
-            <main>{children}</main>
+        <div className={styles.layout}>
+            <Container className={styles["layout__main"]} fluid="xl">
+                {children}
+            </Container>
             <Menu />
-        </Container>
+        </div>
     )
 }
 

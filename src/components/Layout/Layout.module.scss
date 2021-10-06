@@ -1,5 +1,12 @@
+@use "../../styles/common" as common;
 
 .layout {
-  min-height: 100vh;
-  position: relative;
+  @include common.full-page;
+  overflow: hidden;
+  &__main {
+    height: 100%;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }

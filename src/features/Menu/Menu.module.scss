@@ -15,6 +15,7 @@ $horizontal-padding: 20px;
   padding: 10px $horizontal-padding;
   border-radius: common.$border-radius;
   box-shadow: common.$box-shadow-lg;
+  background-color: common.$white;
   z-index: 4000;
   &__item {
     &:not(:last-child) {
