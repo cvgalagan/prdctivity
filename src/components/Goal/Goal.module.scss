@@ -1,0 +1,28 @@
+@use "../../styles/common" as common;
+
+.goal {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border-radius: common.$border-radius;
+    border: 1px solid common.$primary;
+    padding: 10px;
+    &__description {
+        margin-bottom: 5px;
+    }
+    &__options {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    &__duration {
+
+    }
+    &__proofTypes {
+        display: flex;
+        flex-direction: row;
+    }
+    &__proofType {
+
+    }
+}

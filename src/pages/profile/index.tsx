@@ -1,18 +1,15 @@
 import React, { useEffect } from "react"
 import { NextAuthPage } from "../../types/auth"
 import { useRouter } from "next/router"
-import { GetServerSideProps } from "next"
-import { getSession } from "next-auth/client"
+import { useSession } from "next-auth/client"
 import ErrorView from "../../components/ErrorView/ErrorView"
 import { errors } from "../../utility/constants"
 import Loading from "../../components/Loading/Loading"
 
-interface Props {
-    userId?: string
-}
-
-const DefaultProfile: NextAuthPage<Props> = ({ userId }) => {
+const DefaultProfile: NextAuthPage = () => {
     const router = useRouter()
+    const [session] = useSession()
+    const userId = session?.userId as string | undefined
 
     useEffect(() => {
         if (userId) router.push(`${router.pathname}/${userId}`)
@@ -26,15 +23,5 @@ const DefaultProfile: NextAuthPage<Props> = ({ userId }) => {
 }
 
 DefaultProfile.auth = true
-
-export const getServerSideProps: GetServerSideProps<Props> = async context => {
-    const session = await getSession(context)
-    const userId = session?.userId as string | undefined
-    return {
-        props: {
-            userId
-        }
-    }
-}
 
 export default DefaultProfile

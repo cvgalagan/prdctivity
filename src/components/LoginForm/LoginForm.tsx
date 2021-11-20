@@ -11,7 +11,7 @@ import cn from "classnames"
 import LoadingButton from "../LoadingButton/LoadingButton"
 
 const schema = yup.object().shape({
-    email: yup.string().email("Ваш email не похож на email").required("Без email не войдешь"),
+    email: yup.string().email("Это не похоже на email").required("Без email не получится"),
     password: yup.string().required("Пароль - это обязательно")
 })
 

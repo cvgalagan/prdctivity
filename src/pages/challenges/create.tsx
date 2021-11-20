@@ -10,6 +10,9 @@ import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import LoadingButton from "../../components/LoadingButton/LoadingButton"
 import { useRouter } from "next/router"
+import { mockedGoals } from "../../utility/mocks"
+import GoalView from "../../components/Goal/Goal"
+import GoalFormContext from "../../components/GoalFormContext/GoalFormContext"
 
 const labels = {
     title: "Название",
@@ -64,6 +67,11 @@ const CreateChallenge: NextAuthPage = () => {
                         className={styles["createChallenge__challengeDescriptionInput"]}
                     />
                 </FloatingLabel>
+                <div className={styles["createChallenge__goals"]}>
+                    {mockedGoals.map(mg => (
+                        <GoalFormContext key={mg.id} goal={mg} />
+                    ))}
+                </div>
                 <LoadingButton type="submit" className={styles["createChallenge__submit"]}>
                     Создать
                 </LoadingButton>

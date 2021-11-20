@@ -1,10 +1,10 @@
 import React from "react"
 import styles from "../../styles/pages/ChallengePage.module.scss"
 import { NextAuthPage } from "../../types/auth"
-import { faPlus } from "@fortawesome/pro-thin-svg-icons/faPlus"
 import IconButton from "../../components/IconButton/IconButton"
 import { useRouter } from "next/router"
 import PageWithTitleLayout from "../../components/PageWithTitleLayout/PageWithTitleLayout"
+import { faCirclePlus } from "@fortawesome/pro-thin-svg-icons/faCirclePlus"
 
 const ChallengePage: NextAuthPage = () => {
     const router = useRouter()
@@ -16,7 +16,7 @@ const ChallengePage: NextAuthPage = () => {
             headerItems={
                 <IconButton
                     variant="link"
-                    icon={faPlus}
+                    icon={faCirclePlus}
                     href={`${router.pathname}/create`}
                     className={styles["challengePage__icon"]}
                 />
