@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { Goal } from "../../models/goal"
+import { Goal } from "../../../models/goal"
 import styles from "./GoalFormContext.module.scss"
 import GoalView from "../Goal/Goal"
-import IconButton from "../IconButton/IconButton"
+import IconButton from "../../../components/IconButton/IconButton"
 import { faPen, faXmark } from "@fortawesome/pro-thin-svg-icons"
 
 interface Props {
