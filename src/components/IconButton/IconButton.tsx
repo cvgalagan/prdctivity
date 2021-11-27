@@ -13,7 +13,10 @@ const IconButton: React.FC<Props> = props => {
     const { icon, className, children, ...buttonProps } = props
     return (
         <Button {...buttonProps} className={cn(className, styles.iconButton)}>
-            <FontAwesomeIcon icon={icon} />
+            <FontAwesomeIcon
+                icon={icon}
+                className={cn(styles.iconButton__icon, children ?? styles.iconButton__icon_withSpace)}
+            />
             {children}
         </Button>
     )

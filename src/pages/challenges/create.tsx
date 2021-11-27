@@ -58,6 +58,9 @@ const CreateChallenge: NextAuthPage = () => {
                     as="textarea"
                     placeholder={labels.description}
                 />
+                <Form.Label className={styles["createChallenge__divideLabel"]} as="div">
+                    {labels.goals}
+                </Form.Label>
                 <div className={styles["createChallenge__goals"]}>
                     {mockedGoals.map(mg => (
                         <GoalFormContext key={mg.id} goal={mg} />

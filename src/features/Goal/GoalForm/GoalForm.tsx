@@ -1,22 +1,33 @@
 import React from "react"
 import styles from "./GoalForm.module.scss"
-import { useFormContext } from "react-hook-form"
-import { ChallengeForm } from "../../../models/challenge"
 import { Goal } from "../../../models/goal"
-import { Form } from "react-bootstrap"
+import BasicInput from "../../../components/BasicInput/BasicInput"
+import GoalContext from "../GoalContext/GoalContext"
+import IconButton from "../../../components/IconButton/IconButton"
+import { faTrashCan } from "@fortawesome/pro-thin-svg-icons"
+
+const label = "Описание"
 
 interface GoalFormProps {
     index: number
     goal: Goal
+    onDelete?: () => void
 }
-
 const GoalForm: React.FC<GoalFormProps> = props => {
-    const { index, goal } = props
-    const { register } = useFormContext<ChallengeForm>()
+    const { goal, onDelete } = props
 
     return (
-        <div className={styles.goalForm}>
-            <Form.Control></Form.Control>
-        </div>
+        <GoalContext
+            className={styles.goalForm}
+            actions={
+                <IconButton icon={faTrashCan} onDelete={onDelete}>
+                    Удалить
+                </IconButton>
+            }
+        >
+            <BasicInput label={label} as="textarea" value={goal.description} className={styles.goalForm__description} />
+        </GoalContext>
     )
 }
+
+export default GoalForm

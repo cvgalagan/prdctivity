@@ -1,0 +1,24 @@
+@use "../../../styles/common";
+
+.goalContext {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border-radius: common.$border-radius;
+  border: 1px solid common.$primary;
+  padding: 10px;
+  &__main {
+    margin-bottom: 5px;
+  }
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  &__actions {
+
+  }
+  &__options {
+
+  }
+}

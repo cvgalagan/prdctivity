@@ -1,5 +1,17 @@
 @use "../../../styles/common";
 
 .goalForm {
+  &__description {
 
+  }
+  &__duration {
+
+  }
+  &__proofTypes {
+    display: flex;
+    flex-direction: row;
+  }
+  &__proofType {
+
+  }
 }

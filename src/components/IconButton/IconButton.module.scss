@@ -1,4 +1,8 @@
 
 .iconButton {
-
+  &__icon {
+    &_withSpace {
+      margin-right: 5px;
+    }
+  }
 }

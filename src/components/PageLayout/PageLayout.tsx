@@ -6,7 +6,11 @@ import cn from "classnames"
 
 const PageLayout: React.FC<ClassProp> = props => {
     const { children, className } = props
-    return <Container className={cn(styles.pageLayout, className)}>{children}</Container>
+    return (
+        <Container className={cn(styles.pageLayout, className)} fluid="xl">
+            {children}
+        </Container>
+    )
 }
 
 export default PageLayout
