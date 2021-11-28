@@ -4,6 +4,9 @@
   display: flex;
   justify-content: center;
   margin: 0 15%;
+  @include common.media-query {
+    margin: 0 10px;
+  }
   &__form {
     width: 100%;
   }

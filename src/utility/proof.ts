@@ -1,7 +1,8 @@
 import { ProofTypes } from "../models/proof"
 import { faCamera, faEmptySet, faFileLines, faFontCase, faLink, faVideo } from "@fortawesome/pro-thin-svg-icons"
+import { IconProp } from "@fortawesome/fontawesome-svg-core"
 
-export const getProofTypeIcon = (item: ProofTypes) => {
+export const getProofTypeIcon = (item: ProofTypes): IconProp => {
     switch (item) {
         case ProofTypes.Empty:
             return faEmptySet
