@@ -13,6 +13,9 @@ import { useRouter } from "next/router"
 import { mockedGoals } from "../../utility/mocks"
 import BasicInput from "../../components/BasicInput/BasicInput"
 import GoalForm from "../../features/Goal/GoalForm/GoalForm"
+import IconButton from "../../components/IconButton/IconButton"
+import { faPlus } from "@fortawesome/pro-light-svg-icons"
+import { getEmptyGoal } from "../../features/Goal/utility/getEmptyGoal"
 
 const defaultValues: ChallengeForm = {
     title: "Первое испытание",
@@ -28,7 +31,12 @@ const labels = {
 }
 
 const schema = yup.object().shape({
-    title: yup.string().required("Название обязательно")
+    title: yup.string().required("Название обязательно"),
+    goals: yup.array().of(
+        yup.object().shape({
+            description: yup.string().required("Описание для цели обязательно")
+        })
+    )
 })
 
 const CreateChallenge: NextAuthPage = () => {
@@ -41,13 +49,14 @@ const CreateChallenge: NextAuthPage = () => {
         defaultValues,
         resolver: yupResolver(schema)
     })
-    const { fields, remove } = useFieldArray<ChallengeForm>({
+    const { fields, remove, prepend } = useFieldArray<ChallengeForm>({
         control,
         name: "goals"
     })
     const router = useRouter()
 
     const onSubmit = (values: ChallengeForm) => console.log("FORM", values)
+    const handleCreateNewGoal = () => prepend(getEmptyGoal())
 
     return (
         <PageWithTitleLayout className={styles.createChallenge} title="Новое испытание">
@@ -59,7 +68,7 @@ const CreateChallenge: NextAuthPage = () => {
                     controlId="challengeTitle"
                     type="text"
                     placeholder={labels.title}
-                    isInvalid={touchedFields.title && !!errors.title}
+                    isInvalid={touchedFields.title && !!errors?.title}
                     invalidFeedback={errors?.title?.message}
                 />
                 <BasicInput
@@ -71,12 +80,22 @@ const CreateChallenge: NextAuthPage = () => {
                     as="textarea"
                     placeholder={labels.description}
                 />
-                <Form.Label className={styles["createChallenge__divideLabel"]} as="div">
-                    {labels.goals}
-                </Form.Label>
+                <div className={styles.createChallenge__sectionsHeader}>
+                    <Form.Label className={styles["createChallenge__divideLabel"]} as="div">
+                        {labels.goals}
+                    </Form.Label>
+                    <IconButton icon={faPlus} variant="outline-primary" onClick={handleCreateNewGoal} />
+                </div>
                 <div className={styles["createChallenge__goals"]}>
                     {fields.map((field, index) => (
-                        <GoalForm key={field.id} index={index} register={register} onDelete={() => remove(index)} />
+                        <GoalForm
+                            key={field.id}
+                            index={index}
+                            register={register}
+                            onDelete={() => remove(index)}
+                            isInvalid={!!touchedFields.goals?.[index] && !!errors?.goals?.[index]}
+                            invalidFeedback={errors?.goals?.[index]?.description?.message}
+                        />
                     ))}
                 </div>
                 <LoadingButton type="submit" className={styles["createChallenge__submit"]}>

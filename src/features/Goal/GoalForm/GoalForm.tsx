@@ -13,9 +13,11 @@ interface GoalFormProps {
     index: number
     register: UseFormRegister<ChallengeForm>
     onDelete?: () => void
+    isInvalid?: boolean
+    invalidFeedback?: string
 }
 const GoalForm: React.FC<GoalFormProps> = props => {
-    const { onDelete, index, register } = props
+    const { onDelete, index, register, isInvalid, invalidFeedback } = props
 
     return (
         <GoalContext
@@ -31,6 +33,8 @@ const GoalForm: React.FC<GoalFormProps> = props => {
                 label={label}
                 as="textarea"
                 className={styles.goalForm__description}
+                isInvalid={isInvalid}
+                invalidFeedback={invalidFeedback}
             />
         </GoalContext>
     )
