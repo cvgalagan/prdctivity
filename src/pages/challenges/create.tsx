@@ -1,7 +1,7 @@
 import React from "react"
 import styles from "../../styles/pages/CreateChallenge.module.scss"
 import { NextAuthPage } from "../../types/auth"
-import { useForm } from "react-hook-form"
+import { useFieldArray, useForm } from "react-hook-form"
 import PageWithTitleLayout from "../../components/PageWithTitleLayout/PageWithTitleLayout"
 import { Form } from "react-bootstrap"
 import { ChallengeForm } from "../../models/challenge"
@@ -11,8 +11,15 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import LoadingButton from "../../components/LoadingButton/LoadingButton"
 import { useRouter } from "next/router"
 import { mockedGoals } from "../../utility/mocks"
-import GoalFormContext from "../../features/Goal/GoalFormContext/GoalFormContext"
 import BasicInput from "../../components/BasicInput/BasicInput"
+import GoalForm from "../../features/Goal/GoalForm/GoalForm"
+
+const defaultValues: ChallengeForm = {
+    title: "Первое испытание",
+    description:
+        "С Philips Ambilight каждый момент становится ближе. Интеллектуальные светодиоды по краям телевизора реагируют на происходящее на экране и изменяют цвет для еще большего эффекта погружения. Попробовав один раз, вы больше не сможете от этого отказаться.",
+    goals: mockedGoals
+}
 
 const labels = {
     title: "Название",
@@ -26,11 +33,17 @@ const schema = yup.object().shape({
 
 const CreateChallenge: NextAuthPage = () => {
     const {
+        control,
         register,
         handleSubmit,
         formState: { errors, touchedFields }
     } = useForm<ChallengeForm>({
+        defaultValues,
         resolver: yupResolver(schema)
+    })
+    const { fields, remove } = useFieldArray<ChallengeForm>({
+        control,
+        name: "goals"
     })
     const router = useRouter()
 
@@ -62,8 +75,8 @@ const CreateChallenge: NextAuthPage = () => {
                     {labels.goals}
                 </Form.Label>
                 <div className={styles["createChallenge__goals"]}>
-                    {mockedGoals.map(mg => (
-                        <GoalFormContext key={mg.id} goal={mg} />
+                    {fields.map((field, index) => (
+                        <GoalForm key={field.id} index={index} register={register} onDelete={() => remove(index)} />
                     ))}
                 </div>
                 <LoadingButton type="submit" className={styles["createChallenge__submit"]}>

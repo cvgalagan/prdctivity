@@ -1,8 +1,11 @@
-import { Goal as DbGoal } from "@prisma/client"
 import { Duration } from "date-fns"
 import { ProofTypes } from "./proof"
 
 export type Goal = {
+    id: string
+    description: string
+    authorId: string
+    createdAt: Date
     proofTypes: ProofTypes[]
     duration: Duration
-} & Omit<DbGoal, "proofTypes" | "duration">
+}
