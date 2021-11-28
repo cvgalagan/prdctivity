@@ -16,6 +16,7 @@ import GoalForm from "../../features/Goal/GoalForm/GoalForm"
 import IconButton from "../../components/IconButton/IconButton"
 import { faPlus } from "@fortawesome/pro-light-svg-icons"
 import { getEmptyGoal } from "../../features/Goal/utility/getEmptyGoal"
+import AutosizeTextareaInput from "../../components/AutosizeTextareaInput/AutosizeTextareaInput"
 
 const defaultValues: ChallengeForm = {
     title: "Первое испытание",
@@ -67,18 +68,15 @@ const CreateChallenge: NextAuthPage = () => {
                     className={styles["createChallenge__formInput"]}
                     controlId="challengeTitle"
                     type="text"
-                    placeholder={labels.title}
                     isInvalid={touchedFields.title && !!errors?.title}
                     invalidFeedback={errors?.title?.message}
                 />
-                <BasicInput
+                <AutosizeTextareaInput
                     {...register("description")}
                     className={styles["createChallenge__formInput"]}
                     inputClassName={styles["createChallenge__challengeDescriptionInput"]}
-                    controlId="challengeTitle"
+                    controlId="challengeDescription"
                     label={labels.description}
-                    as="textarea"
-                    placeholder={labels.description}
                 />
                 <div className={styles.createChallenge__sectionsHeader}>
                     <Form.Label className={styles["createChallenge__divideLabel"]} as="div">

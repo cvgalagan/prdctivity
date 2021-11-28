@@ -15,7 +15,7 @@ const BasicInput = React.forwardRef<BasicInputPropsRefType, BasicInputProps>((pr
 
     return (
         <FloatingLabel controlId={controlId} label={label} className={className}>
-            <Form.Control {...inputProps} ref={ref} className={inputClassName} />
+            <Form.Control {...inputProps} placeholder={label} ref={ref} className={inputClassName} />
             <Form.Control.Feedback type="invalid" tooltip>
                 {invalidFeedback}
             </Form.Control.Feedback>

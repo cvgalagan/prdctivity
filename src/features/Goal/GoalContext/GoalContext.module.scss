@@ -13,10 +13,12 @@
   &__footer {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   &__actions {
-
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
   }
   &__options {
 

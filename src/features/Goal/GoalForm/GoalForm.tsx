@@ -1,11 +1,11 @@
 import React from "react"
 import styles from "./GoalForm.module.scss"
-import BasicInput from "../../../components/BasicInput/BasicInput"
 import GoalContext from "../GoalContext/GoalContext"
 import IconButton from "../../../components/IconButton/IconButton"
-import { faTrashCan } from "@fortawesome/pro-thin-svg-icons"
+import { faTrashCan } from "@fortawesome/pro-light-svg-icons"
 import { UseFormRegister } from "react-hook-form/dist/types/form"
 import { ChallengeForm } from "../../../models/challenge"
+import AutosizeTextareaInput from "../../../components/AutosizeTextareaInput/AutosizeTextareaInput"
 
 const label = "Описание"
 
@@ -23,15 +23,15 @@ const GoalForm: React.FC<GoalFormProps> = props => {
         <GoalContext
             className={styles.goalForm}
             actions={
-                <IconButton icon={faTrashCan} onClick={onDelete}>
+                <IconButton icon={faTrashCan} onClick={onDelete} variant="outline-danger" size="sm">
                     Удалить
                 </IconButton>
             }
         >
-            <BasicInput
+            <AutosizeTextareaInput
                 {...register(`goals.${index}.description` as const)}
+                controlId={`descriptionInput_${index}`}
                 label={label}
-                as="textarea"
                 className={styles.goalForm__description}
                 isInvalid={isInvalid}
                 invalidFeedback={invalidFeedback}
