@@ -1,4 +1,4 @@
-import { Goal } from "../../../models/goal"
+import { Goal } from "../models/goal"
 
 export const getEmptyGoal = (): Goal => ({
     id: "",

@@ -1,9 +1,9 @@
 import React from "react"
 import styles from "./Goal.module.scss"
-import { Goal } from "../../../models/goal"
-import { formatDurationLocale } from "../../../utility/dateTime"
+import { Goal } from "../../models/goal"
+import { formatDurationLocale } from "../../../../utility/dateTime"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { getProofTypeIcon } from "../../../utility/proof"
+import { getProofTypeIcon } from "../../../../utility/proof"
 import GoalContext from "../GoalContext/GoalContext"
 
 interface Props {

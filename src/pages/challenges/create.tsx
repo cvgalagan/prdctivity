@@ -12,7 +12,7 @@ import LoadingButton from "../../components/LoadingButton/LoadingButton"
 import { useRouter } from "next/router"
 import { mockedGoals } from "../../utility/mocks"
 import BasicInput from "../../components/BasicInput/BasicInput"
-import GoalForm from "../../features/Goal/GoalForm/GoalForm"
+import GoalForm from "../../features/Goal/components/GoalForm/GoalForm"
 import IconButton from "../../components/IconButton/IconButton"
 import { faPlus } from "@fortawesome/pro-light-svg-icons"
 import { getEmptyGoal } from "../../features/Goal/utility/getEmptyGoal"
@@ -22,7 +22,8 @@ const defaultValues: ChallengeForm = {
     title: "Первое испытание",
     description:
         "С Philips Ambilight каждый момент становится ближе. Интеллектуальные светодиоды по краям телевизора реагируют на происходящее на экране и изменяют цвет для еще большего эффекта погружения. Попробовав один раз, вы больше не сможете от этого отказаться.",
-    goals: mockedGoals
+    goals: mockedGoals,
+    assignee: ""
 }
 
 const labels = {
@@ -95,6 +96,12 @@ const CreateChallenge: NextAuthPage = () => {
                             invalidFeedback={errors?.goals?.[index]?.description?.message}
                         />
                     ))}
+                </div>
+                <div className={styles.createChallenge__sectionsHeader}>
+                    <Form.Label className={styles["createChallenge__divideLabel"]} as="div">
+                        {labels.goals}
+                    </Form.Label>
+                    <IconButton icon={faPlus} variant="outline-primary" onClick={handleCreateNewGoal} />
                 </div>
                 <LoadingButton type="submit" className={styles["createChallenge__submit"]}>
                     Создать

@@ -1,11 +1,11 @@
 import React from "react"
 import styles from "./GoalForm.module.scss"
 import GoalContext from "../GoalContext/GoalContext"
-import IconButton from "../../../components/IconButton/IconButton"
+import IconButton from "../../../../components/IconButton/IconButton"
 import { faTrashCan } from "@fortawesome/pro-light-svg-icons"
 import { UseFormRegister } from "react-hook-form/dist/types/form"
-import { ChallengeForm } from "../../../models/challenge"
-import AutosizeTextareaInput from "../../../components/AutosizeTextareaInput/AutosizeTextareaInput"
+import { ChallengeForm } from "../../../../models/challenge"
+import AutosizeTextareaInput from "../../../../components/AutosizeTextareaInput/AutosizeTextareaInput"
 
 const label = "Описание"
 

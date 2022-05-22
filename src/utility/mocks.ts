@@ -1,4 +1,4 @@
-import { Goal } from "../models/goal"
+import { Goal } from "../features/Goal/models/goal"
 import { ProofTypes } from "../models/proof"
 
 const mockedDate = new Date(Date.now() - 100000)

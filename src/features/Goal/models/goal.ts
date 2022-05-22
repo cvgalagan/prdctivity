@@ -1,5 +1,5 @@
 import { Duration } from "date-fns"
-import { ProofTypes } from "./proof"
+import { ProofTypes } from "../../../models/proof"
 
 export type Goal = {
     id: string

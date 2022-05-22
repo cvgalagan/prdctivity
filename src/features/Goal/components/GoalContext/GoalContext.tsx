@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "./GoalContext.module.scss"
-import { ClassProp } from "../../../types/classProp"
+import { ClassProp } from "../../../../types/classProp"
 import cn from "classnames"
 
 interface GoalContextProps extends ClassProp {
